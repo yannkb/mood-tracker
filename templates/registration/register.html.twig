@@ -3,16 +3,22 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Register</h1>
 
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="mb-3">
+            {{ form_row(registrationForm.email) }}
+        </div>
+        <div class="mb-3">
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+        </div>
+        <div class="form-check mb-3">
+            {{ form_row(registrationForm.agreeTerms) }}
+        </div>
 
         <button type="submit" class="btn btn-lg btn-primary">Register</button>
     {{ form_end(registrationForm) }}
