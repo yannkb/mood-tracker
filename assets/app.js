@@ -5,6 +5,7 @@
  * which should already be in your base.html.twig.
  */
 import './styles/app.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import bootstrap from 'bootstrap';
 import htmx from 'htmx.org';
 
