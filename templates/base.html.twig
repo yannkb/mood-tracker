@@ -24,14 +24,14 @@
                 </div>
                 <ul class="nav nav-underline col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page"
-                        hx-get="{{ path('app_home') }}"
-                        hx-trigger="click"
-                        hx-target="#mood-tracker-body"
-                        hx-swap="outerHTML">Home</a>
+                        <a hx-get="{{ path('app_home') }}" hx-target="#mood-tracker-body" hx-trigger="click" hx-swap="outerHTML" class="nav-link">
+                            Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Features</a>
+                        <a hx-get="{{ path('app_home') }}" hx-target="#mood-tracker-body" hx-trigger="click" hx-swap="outerHTML" class="nav-link">
+                            Features
+                        </a>
                     </li>
                 </ul>
                 <div class="col-md-3 text-end">
@@ -39,18 +39,10 @@
                         {# <span>Connected as {{ app.user.email }}</span> #}
                         <a class="btn btn-outline-danger" href="{{ path('app_logout') }}" role="button">Logout</a>
                     {% else %}
-                        <a class="btn btn-outline-primary me-2" role="button"
-                        hx-get="{{ path('app_login') }}"
-                        hx-trigger="click"
-                        hx-target="#mood-tracker-body"
-                        hx-swap="outerHTML">
+                        <a class="btn btn-outline-primary me-2" href="{{ path('app_login') }}" role="button">
                             Login
                         </a>
-                        <a class="btn btn-primary" role="button"
-                        hx-get="{{ path('app_register') }}"
-                        hx-trigger="click"
-                        hx-target="#mood-tracker-body"
-                        hx-swap="outerHTML">
+                        <a class="btn btn-primary" href="{{ path('app_register') }}" role="button">
                             Register
                         </a>
                     {% endif %}
