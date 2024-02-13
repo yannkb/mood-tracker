@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-bs-theme="dark">
+<html>
 	<head>
 		<meta charset="UTF-8">
 		<title>
@@ -15,42 +15,6 @@
 		{% endblock %}
 	</head>
 	<body id="mood-tracker-body">
-        <div class="container">
-            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                <div class="col-md-3 mb-2 mb-md-0">
-                    <a href="#" class="d-inline-flex link-body-emphasis text-decoration-none">
-                        <span class="fs-4">MoodTracker</span>
-                    </a>
-                </div>
-                <ul class="nav nav-underline col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li class="nav-item">
-                        <a hx-get="{{ path('app_home') }}" hx-target="#mood-tracker-body" hx-trigger="click" hx-swap="outerHTML" class="nav-link">
-                            Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a hx-get="{{ path('app_home') }}" hx-target="#mood-tracker-body" hx-trigger="click" hx-swap="outerHTML" class="nav-link">
-                            Features
-                        </a>
-                    </li>
-                </ul>
-                <div class="col-md-3 text-end">
-                    {% if app.user %}
-                        {# <span>Connected as {{ app.user.email }}</span> #}
-                        <a class="btn btn-outline-danger" href="{{ path('app_logout') }}" role="button">Logout</a>
-                    {% else %}
-                        <a class="btn btn-outline-primary me-2" href="{{ path('app_login') }}" role="button">
-                            Login
-                        </a>
-                        <a class="btn btn-primary" href="{{ path('app_register') }}" role="button">
-                            Register
-                        </a>
-                    {% endif %}
-                </div>
-            </header>
-        </div>
-        <div class="container">
-		    {% block body %}{% endblock %}
-        </div>
+        {% block body %}{% endblock %}
 	</body>
 </html>
