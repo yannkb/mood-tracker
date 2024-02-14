@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
 		<title>
 			{% block title %}Welcome!
 			{% endblock %}
@@ -14,7 +16,18 @@
 			{% endblock %}
 		{% endblock %}
 	</head>
-	<body id="mood-tracker-body">
-        {% block body %}{% endblock %}
+	<body>
+        <main class="container">
+            <nav>
+                <ul>
+                    <li><a href="{{ path('app_home') }}" class="contrast"><strong>Mood Tracker</strong></a></li>
+                </ul>
+                <ul>
+                    <li><a href="{{ path('app_login') }}"><button class="primary">Login</button></a></li>
+                </ul>
+            </nav>
+
+            {% block body %}{% endblock %}
+        </main>
 	</body>
 </html>

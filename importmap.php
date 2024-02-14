@@ -21,4 +21,11 @@ return [
     'htmx.org' => [
         'version' => '1.9.10',
     ],
+    '@picocss/pico' => [
+        'version' => '2.0.0',
+    ],
+    '@picocss/pico/css/pico.min.css' => [
+        'version' => '2.0.0',
+        'type' => 'css',
+    ],
 ];
