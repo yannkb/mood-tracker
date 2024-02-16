@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -29,6 +31,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Mood::class, orphanRemoval: true)]
+    private Collection $moods;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    public function __construct()
+    {
+        $this->moods = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -98,5 +111,47 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Mood>
+     */
+    public function getMoods(): Collection
+    {
+        return $this->moods;
+    }
+
+    public function addMood(Mood $mood): static
+    {
+        if (!$this->moods->contains($mood)) {
+            $this->moods->add($mood);
+            $mood->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMood(Mood $mood): static
+    {
+        if ($this->moods->removeElement($mood)) {
+            // set the owning side to null (unless already changed)
+            if ($mood->getUserId() === $this) {
+                $mood->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
     }
 }
