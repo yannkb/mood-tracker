@@ -19,7 +19,7 @@
 		<tbody>
 			{% for mood in moods %}
 				<tr>
-					<th scope="row">{{ mood.createdAt|date("d/m/Y, H:i") }}</th>
+					<th scope="row">{{ mood.createdAt|date("d M, H:i") }}</th>
 					<td>{{ mood.mood }}</td>
 					<td colspan="2">{{ mood.comment }}</td>
 				</tr>
