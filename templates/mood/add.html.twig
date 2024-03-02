@@ -3,7 +3,8 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-
-{{ form(form) }}
-
+	<a href="{{ path('app_mood_index') }}">
+		<button class="secondary">Back</button>
+	</a>
+	{{ form(form) }}
 {% endblock %}
