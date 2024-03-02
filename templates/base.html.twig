@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="color-scheme" content="light dark">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="color-scheme" content="light dark">
 		<title>
 			{% block title %}Welcome!
 			{% endblock %}
@@ -17,22 +17,37 @@
 		{% endblock %}
 	</head>
 	<body>
-        <main class="container">
-            <nav>
-                <ul>
-                    <li><a href="{{ path('app_home') }}" class="contrast"><img style="height: 3rem; width: 3rem;" src="{{ asset('images/logo.png') }}" alt="logo"><strong>Mood Tracker</strong></a></li>
-                </ul>
-                <ul>
-                    {% if app.user %}
-                        <li><a href="{{ path('app_logout') }}"><button class="secondary">Logout</button></a></li>
-                    {% else %}
-                        <li><a href="{{ path('app_login') }}"><button class="primary">Login</button></a></li>
-                        <li><a href="{{ path('app_register') }}"><button class="contrast">Register</button></a></li>
-                    {% endif %}
-                </ul>
-            </nav>
+		<main class="container">
+			<nav>
+				<ul>
+					<li>
+						<a href="{{ path('app_home') }}" class="contrast"><img style="height: 3rem; width: 3rem;" src="{{ asset('images/logo.png') }}" alt="logo"><strong>Mood Tracker</strong>
+						</a>
+					</li>
+				</ul>
+				<ul>
+					{% if app.user %}
+						<li>
+							<a href="{{ path('app_logout') }}">
+								<button class="secondary">Logout</button>
+							</a>
+						</li>
+					{% else %}
+						<li>
+							<a href="{{ path('app_login') }}">
+								<button class="primary">Login</button>
+							</a>
+						</li>
+						<li>
+							<a href="{{ path('app_register') }}">
+								<button class="contrast">Register</button>
+							</a>
+						</li>
+					{% endif %}
+				</ul>
+			</nav>
 
-            {% block body %}{% endblock %}
-        </main>
+			{% block body %}{% endblock %}
+		</main>
 	</body>
 </html>
