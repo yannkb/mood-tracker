@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\MoodRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MoodRepository::class)]
@@ -18,14 +17,14 @@ class Mood
     #[ORM\JoinColumn(nullable: false)]
     private ?User $userId = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $moodDate = null;
-
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(length: 1000, nullable: true)]
     private ?string $comment = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $mood = null;
 
     public function getId(): ?int
     {
@@ -40,18 +39,6 @@ class Mood
     public function setUserId(?User $userId): static
     {
         $this->userId = $userId;
-
-        return $this;
-    }
-
-    public function getMoodDate(): ?\DateTimeInterface
-    {
-        return $this->moodDate;
-    }
-
-    public function setMoodDate(\DateTimeInterface $moodDate): static
-    {
-        $this->moodDate = $moodDate;
 
         return $this;
     }
@@ -76,6 +63,18 @@ class Mood
     public function setComment(?string $comment): static
     {
         $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getMood(): ?string
+    {
+        return $this->mood;
+    }
+
+    public function setMood(string $mood): static
+    {
+        $this->mood = $mood;
 
         return $this;
     }
