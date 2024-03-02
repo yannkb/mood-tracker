@@ -21,28 +21,30 @@ class MoodRepository extends ServiceEntityRepository
         parent::__construct($registry, Mood::class);
     }
 
-//    /**
-//     * @return Mood[] Returns an array of Mood objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('m.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Mood[] Returns an array of Mood objects
+     */
+    public function findByUserIdAndMonthAndYear($userId, $month, $year): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.userId = :userId')
+            ->andWhere('MONTH(m.createdAt) = :month')
+            ->andWhere('YEAR(m.createdAt) = :year')
+            ->setParameter('userId', $userId)
+            ->setParameter('month', $month)
+            ->setParameter('year', $year)
+            ->orderBy('m.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Mood
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Mood
+    //    {
+    //        return $this->createQueryBuilder('m')
+    //            ->andWhere('m.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

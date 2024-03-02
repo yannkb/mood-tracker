@@ -17,7 +17,7 @@ class MoodController extends AbstractController
     public function index(EntityManagerInterface $em): Response
     {
         $repository = $em->getRepository(Mood::class);
-        $moods = $repository->findBy(['userId' => $this->getUser()->getId()], ['createdAt' => 'DESC']);
+        $moods = $repository->findByUserIdAndMonthAndYear($this->getUser()->getId(), date('n'), date('Y'));
 
         return $this->render('mood/index.html.twig', [
             'moods' => $moods,
