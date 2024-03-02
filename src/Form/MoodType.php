@@ -17,8 +17,6 @@ class MoodType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('createdAt', HiddenType::class)
-            ->add('comment')
             ->add('mood', ChoiceType::class, [
                 'choices'  => [
                     'Rad' => 'rad',
@@ -28,6 +26,8 @@ class MoodType extends AbstractType
                     'Awful' => 'awful',
                 ]
             ])
+            ->add('comment')
+            ->add('createdAt', HiddenType::class)
             ->add('userId', HiddenType::class)
             ->add('save', SubmitType::class);
     }
