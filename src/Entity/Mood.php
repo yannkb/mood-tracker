@@ -26,6 +26,9 @@ class Mood
     #[ORM\Column(length: 255)]
     private ?string $mood = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?array $activities = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Mood
     public function setMood(string $mood): static
     {
         $this->mood = $mood;
+
+        return $this;
+    }
+
+    public function getActivities(): ?array
+    {
+        return $this->activities;
+    }
+
+    public function setActivities(?array $activities): static
+    {
+        $this->activities = $activities;
 
         return $this;
     }
