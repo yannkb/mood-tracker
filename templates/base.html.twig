@@ -21,7 +21,7 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="{{ path('app_home') }}" class="contrast"><img style="height: 3rem; width: 3rem;" src="{{ asset('images/logo.png') }}" alt="logo"><strong>Mood Tracker</strong>
+						<a hx-get="{{ path('app_home') }}" hx-target="main.container" class="contrast"><img style="height: 3rem; width: 3rem;" src="{{ asset('images/logo.png') }}" alt="logo"><strong>Mood Tracker</strong>
 						</a>
 					</li>
 				</ul>
@@ -34,12 +34,12 @@
 						</li>
 					{% else %}
 						<li>
-							<a href="{{ path('app_login') }}">
+							<a hx-get="{{ path('app_login') }}" hx-target="main.container">
 								<button class="primary">Login</button>
 							</a>
 						</li>
 						<li>
-							<a href="{{ path('app_register') }}">
+							<a hx-get="{{ path('app_register') }}" hx-target="main.container">
 								<button class="contrast">Register</button>
 							</a>
 						</li>
