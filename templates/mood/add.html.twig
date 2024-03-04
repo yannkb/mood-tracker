@@ -3,8 +3,6 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-	<a hx-get="{{ path('app_mood_index') }}" hx-target="main.container">
-		<button class="secondary">Back</button>
-	</a>
+	<button hx-get="{{ path('app_mood_index') }}" hx-target="main.container" class="secondary">Back</button>
 	{{ form(form) }}
 {% endblock %}
