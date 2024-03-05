@@ -11,9 +11,7 @@
 				<th scope="col">Activities</th>
 				<th scope="col">Comment</th>
 				<th scope="col">
-					<a hx-get="{{ path('app_mood_add') }}" hx-target="main.container">
-						<button class="primary">Add new entry</button>
-					</a>
+					<button hx-get="{{ path('app_mood_add') }}" hx-target="main.container" class="primary">Add new entry</button>
 				</th>
 			</tr>
 		</thead>
