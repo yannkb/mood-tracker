@@ -28,6 +28,11 @@
 				<ul>
 					{% if app.user %}
 						<li>
+							<a href="{{ path('app_mood_index') }}">
+								<button class="primary"><img src="{{ asset('images/user.png') }}" alt="">{{ app.user.email }}</button>
+							</a>
+						</li>
+						<li>
 							<a href="{{ path('app_logout') }}">
 								<button class="secondary">Logout</button>
 							</a>
